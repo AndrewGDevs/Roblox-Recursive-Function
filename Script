@@ -1,0 +1,27 @@
+local units = {
+	["Heavy Soldier"] = {
+		WalkSpeed = 16;
+		Damage = 25;
+	};
+
+	["Scout"] = {
+		WalkSpeed = 25;
+		Damage = 15;
+	};
+}
+
+
+local function recursiveCopy(dataTable)
+	local tableCopy = {}
+
+	for index, value in pairs(dataTable) do
+		if type(value) == "table" then
+			value = recursiveCopy(value)
+		end
+		tableCopy[index] = value
+	end
+    
+	return tableCopy
+end
+
+print(recursiveCopy(units))
